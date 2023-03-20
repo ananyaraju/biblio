@@ -110,7 +110,6 @@ contract Library is ERC721URIStorage {
         require(msg.value == price, "Please pay the asking price to complete the purchase");
         idToBookToken[tokenId].downloadCount = currDownloads+1;
         payable(publisher).transfer(msg.value);
-
     }
 
 }
