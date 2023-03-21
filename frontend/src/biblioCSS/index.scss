@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Quicksand:wght@400;500;700&display=swap');
+@import 'variables';
+
+body {
+    // font-family: 'Playfair Display', serif;
+    font-family: 'Quicksand', sans-serif;
+    border: 50px solid $darkbiege;
+    padding: 50px;
+    background-color: $lightbiege;
+}
+
+.App {
+    text-align: center;
+}

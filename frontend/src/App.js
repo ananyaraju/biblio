@@ -1,9 +1,9 @@
-import './App.css';
+import './biblioCSS/index.scss';
 
 function App() {
   return (
     <div className="App">
-      hi
+      hello
     </div>
   );
 }
