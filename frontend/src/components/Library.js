@@ -1,11 +1,15 @@
-import React, { Component } from 'react'
+import '../biblioCSS/index.scss'
 
-export default class Library extends Component {
-  render() {
-    return (
-      <div>
-        
-      </div>
-    )
-  }
+const Library = () => {
+
+  return (
+
+    <div className="library">
+      <p>Explore our Library</p>
+    </div>
+
+  )
+
 }
+
+export default Library

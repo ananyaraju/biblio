@@ -1,11 +1,16 @@
-import React, { Component } from 'react'
+import '../biblioCSS/index.scss'
 
-export default class AddBook extends Component {
-  render() {
-    return (
-      <div>
-        
-      </div>
-    )
-  }
+const AddBook = () => {
+
+  return (
+
+    <div className="addbook">
+      <p>Add a Book</p>
+      
+    </div>
+
+  )
+
 }
+
+export default AddBook

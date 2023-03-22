@@ -14,7 +14,9 @@ const NavBar = () => {
 
         <>
             <div className="Navbar">
-                <img as={Link} to="/" src={bibliologo} alt="" className="bibliologo" />
+                <Link as={Link} to="/">
+                    <img src={bibliologo} alt="" className="bibliologo" />
+                </Link>
                 <div className="line" />
                 <div className="button-bar">
                     <Link as={Link} to="/library" className="nav-button">

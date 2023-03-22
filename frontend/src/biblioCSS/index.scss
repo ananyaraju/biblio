@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Quicksand:wght@400;500;700&display=swap');
 @import 'variables';
 
@@ -11,8 +13,10 @@ body {
     text-align: center;
 }
 
+
+//Navbar CSS
 .Navbar {
-    margin-top: 20px;
+    margin-top: $topmargin;
     margin-bottom: 20px;
     top: 0; bottom: 0;
     padding: 13px;
@@ -44,5 +48,89 @@ body {
             width: 26px;
             margin-bottom: 20px;
         }
+    }
+}
+
+//Homepage
+.home {
+    margin-left: 60px; //to align to center (due to sidebar)
+    margin-top: $topmargin;
+    .top-nav {
+        display: flex;
+        justify-content: space-between;
+        margin-left: 5%;
+        margin-right: 8%;
+        margin-bottom: 50px;
+        .icon {
+            margin-right: 10px;
+        }
+        input {
+            width: 60%;
+            font-size: $fontsmall;
+            color: $text;
+            background-color: $lightbiege;
+            border: none;
+            border-bottom: 1px solid $mediumbiege;
+        }
+        input:focus {
+            text-decoration: none;
+            border: none;
+            outline: none;
+        }
+    }
+    .header {
+        text-align: left;
+        margin-left: 60px;
+        margin-right: 60px;
+        max-width: 60%;
+        h2 {
+            margin-top: 60px;
+            margin-right: 40px;
+            text-align: left;
+            font-family: 'Playfair Display', serif;
+        }
+        p {
+            font-size: $fontmedium;
+        }
+    }
+}
+.button {
+    font-size: $fontmedium*0.8;
+    background-color: $blue;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    text-decoration: none;
+}
+.button:hover, .button:active, .button:focus {
+    color: white;
+    text-decoration: none;
+}
+.accID {
+    font-size: $fontmedium*0.8;
+    font-weight: 600;
+    padding-top: 5px;
+}
+
+//Library
+.library {
+    margin-left: 60px; //to align to center (due to sidebar)
+    margin-top: $topmargin*2;
+    p {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        font-size: $fontlarge*1.6;
+    }
+}
+
+//Add Book
+.addbook {
+    margin-left: 60px; //to align to center (due to sidebar)
+    margin-top: $topmargin*2;
+    p {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        font-size: $fontlarge*1.6;
     }
 }
