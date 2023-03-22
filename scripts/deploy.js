@@ -18,7 +18,7 @@ async function main() {
   }
 
   //This writes the ABI and address to library.json
-  fs.writeFileSync('./client/src/Library.json', JSON.stringify(data))
+  fs.writeFileSync('./frontend/src/Library.json', JSON.stringify(data))
 
   console.log("Deployed successfully");
 }
