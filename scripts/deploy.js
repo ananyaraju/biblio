@@ -8,17 +8,17 @@ async function main() {
   console.log("Deploying contracts with the account:", deployer.address);
   console.log("Account balance:", (await deployer.getBalance()).toString());
 
-  const RabbitCoin = await hre.ethers.getContractFactory("RabbitCoin");
-  const rabbitCoin = await RabbitCoin.deploy();
-  await rabbitCoin.deployed();
+  const Library = await hre.ethers.getContractFactory("Library");
+  const library = await Library.deploy();
+  await library.deployed();
 
   const data = {
-    address: rabbitCoin.address,
-    abi: JSON.parse(rabbitCoin.interface.format('json'))
+    address: library.address,
+    abi: JSON.parse(library.interface.format('json'))
   }
 
-  //This writes the ABI and address to the rabbitcoin.json
-  fs.writeFileSync('./client/src/RabbitCoin.json', JSON.stringify(data))
+  //This writes the ABI and address to library.json
+  fs.writeFileSync('./client/src/Library.json', JSON.stringify(data))
 
   console.log("Deployed successfully");
 }
