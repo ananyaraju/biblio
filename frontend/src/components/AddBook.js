@@ -1,16 +1,12 @@
-import '../biblioCSS/index.scss'
+import React from 'react'
 
-const AddBook = () => {
+const AddBook  = () => {
 
-  return (
-
-    <div className="addbook">
-      <p>Add a Book</p>
-      
-    </div>
-
-  )
-
+    return (
+        <div className="addbook">
+            <p>Add book</p>
+        </div>
+    )
 }
 
 export default AddBook

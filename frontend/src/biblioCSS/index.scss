@@ -4,8 +4,7 @@
 @import 'variables';
 
 body {
-    // font-family: 'Playfair Display', serif;
-    font-family: 'Quicksand', sans-serif;
+    font-family: $normalfont;
     background-color: $lightbiege;
 }
 
@@ -88,9 +87,11 @@ body {
             margin-right: 40px;
             text-align: left;
             font-weight: 600;
-            font-family: 'Playfair Display', serif;
+            font-family: $royalfont;
         }
         p {
+            margin-top: -2px;
+            margin-bottom: 30px;
             font-size: $fontmedium;
         }
     }
@@ -100,7 +101,7 @@ body {
     background-color: $blue;
     color: white;
     border: none;
-    border-radius: 15px;
+    border-radius: 18px;
     padding: 10px;
     text-decoration: none;
 }
@@ -119,7 +120,7 @@ body {
     margin-left: 60px; //to align to center (due to sidebar)
     margin-top: $topmargin*2;
     p {
-        font-family: 'Playfair Display', serif;
+        font-family: $royalfont;
         font-weight: 700;
         font-size: $fontlarge*1.6;
     }
@@ -130,7 +131,7 @@ body {
     margin-left: 60px; //to align to center (due to sidebar)
     margin-top: $topmargin*2;
     p {
-        font-family: 'Playfair Display', serif;
+        font-family: $royalfont;
         font-weight: 700;
         font-size: $fontlarge*1.6;
     }
