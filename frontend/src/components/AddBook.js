@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { NFTStorage } from "nft.storage";
 import LibraryJSON from "../Library.json";
 import { ethers } from 'ethers';
-const APIKEY = "YOUR_API_KEY";
+const APIKEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweGFEQjA0NkVhMGY5YTA1ZmUxOTYwN2JjOTI3ODFjNDBhNkRmNURhOGIiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY3OTYwMzM0ODE3MSwibmFtZSI6IkJpYmxpbyJ9.HLD1ltmDUn-QvaSDo0juE4BBD6Iayt9lKE2Z6vqbNgs";
 
 const MintNFT =() => {
 
