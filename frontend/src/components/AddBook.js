@@ -97,32 +97,49 @@ const MintNFT =() => {
     }
 
     return(
-        <div className='MintNFT'>
-            <form>
-                <h3>Mint your NFT on biblio & Filecoin/IPFS</h3>
-                <input type="file" onChange={handleFileUpload}></input>
-                <br/>Name: <input type="text" name="name" onChange={(event)=>{setName(event.target.value)}}/>
-                <br/>Author: <input type="text" name="author" onChange={(event)=>{setAuthor(event.target.value)}}/>
-                <br/>Description: <input type="textarea" name="description" onChange={(event)=>{setDescription(event.target.value)}}/>
-                <br/>Price: <input type="number" step="any" onChange={(event)=>{setPrice(event.target.value)}}></input>
-                <br/>Genre:
-                <select className="genre" onChange={(event)=>{setGenre(event.target.value)}}>
-                    <option value="1">Mystery</option>
-                    <option value="2">Sci-Fi</option>
-                    <option value="3">Y/A</option>
-                    <option value="4">Manga</option>
-                    <option value="5">Fiction</option>
-                    <option value="6">True Crime</option>
-                </select>
-                <br/>Downloadable link: <input type="text" name="link" onChange={(event)=>{setLink(event.target.value)}}/>
-                <br/>
-                <button onClick={e=>mintNFTToken(e, uploadedFile)}>Mint NFT</button>
-            </form>
-            {txStatus && <p>{txStatus}</p>}
-            {imageView && <img className='NFTImg' src={imageView} alt="NFT preview"/>}
-            {metaDataURL && <p><a href={metaDataURL}>Metadata on IPFS</a></p>}
-            {txURL && <p><a href={txURL}>See the mint transaction</a></p>}
-            {errorMessage}
+        <div className="addbook">
+            <p>Add a Book</p>
+            <div className="main">
+                <div className="form">
+                    <div className="row">
+                        <div className="col sm-2 left">
+                            <span className="heading">Cover Image</span><br/>
+                            <input style={{width: '100%'}} className="file-upload" type="file" onChange={handleFileUpload}></input>
+                            <br/><br/><br/>
+                            <span className="heading">Description</span>
+                                <br/><input style={{height: '100px'}} type="textarea" name="description" onChange={(event)=>{setDescription(event.target.value)}}/>
+                        </div>
+                        <div className="col sm-2 right">
+                            <span className="heading">Book Title</span>
+                                <br/><input type="text" step="any" onChange={(event)=>{setName(event.target.value)}}></input>
+                                <br/><br/>
+                                <span className="heading">Author</span>
+                                <br/><input type="text" name="author" onChange={(event)=>{setAuthor(event.target.value)}}/>
+                                <br/><br/>
+                                <span className="heading">Price</span>
+                                <br/><input type="number" name="price" onChange={(event)=>{setPrice(event.target.value)}}/>
+                                <br/><br/><br/><br/>
+                                <span className="heading" style={{paddingRight: '30px'}}>Genre</span>
+                                <select className="genre" style={{width: "100%"}} onChange={(event)=>{setGenre(event.target.value)}}>
+                                    <option value="1">Mystery</option>
+                                    <option value="2">Sci-Fi</option>
+                                    <option value="3">Y/A</option>
+                                    <option value="4">Manga</option>
+                                    <option value="5">Fiction</option>
+                                    <option value="6">True Crime</option>
+                                </select>                           
+                                
+                        </div>
+                        <span className="heading" style={{marginTop: '50px'}}>Downloadable link</span>
+                        <input style={{maxWidth: '100%', marginBottom: '50px'}} type="text" name="link" onChange={(event)=>{setLink(event.target.value)}}/>
+                        
+                        <button className="mint" onClick={e=>mintNFTToken(e, uploadedFile)}>Mint NFT</button>
+                        
+                        {txStatus && <h4>{txStatus}</h4>}
+                        {errorMessage}
+                    </div>
+                </div>
+            </div>
         </div>
         
     );

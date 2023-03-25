@@ -141,9 +141,39 @@ body {
     margin-left: 60px; //to align to center (due to sidebar)
     margin-top: $topmargin*2;
     p {
+        margin-left: 7%;
+        text-align: left;
         font-family: $royalfont;
         font-weight: 700;
         font-size: $fontlarge*1.6;
+        margin-bottom: 50px;
+    }
+    .main {
+        margin: 7%;
+        background-color: $cream;
+        padding: 5%;
+    }
+    .form {
+        display: flex;
+        justify-content: center;
+        .file-upload {
+            padding-left: 10%;
+            height: 166px;
+            max-width: 80%;
+            background-color: $mediumbiege;
+            border-color: #0C0B0E;
+        }
+        .right {
+            text-align: left;
+            padding-left: 10%;
+        }
+        .heading {
+            font-size: medium;
+            font-weight: 600;
+        }
+        input {
+            width: 100%;
+        }
     }
 }
 
@@ -195,17 +225,6 @@ body {
             font-size: $fontmedium*0.8;
         }
     }
-    .buy {
-        border: none;
-        margin-top: 10px;
-        padding: 5px;
-        border-radius: 8px;
-        background-color: $darkbiege;
-        width: 100%;
-    }
-    .buy:hover {
-        text-decoration: underline;
-    }
 }
 .card-link {
     text-decoration: none;
@@ -214,4 +233,16 @@ body {
 .card-link:hover {
     text-decoration: none;
     color: black;
+}
+.mint {
+    border: none;
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 8px;
+    background-color: $darkbiege;
+    width: 100%;
+    margin-bottom: 50px;
+}
+.mint:hover {
+    text-decoration: underline;
 }
