@@ -65,7 +65,7 @@ const Library = () => {
 
     <div className="library">
       <p>Explore our Library</p>
-      <div>
+      <div className="books-container">
         {libraryData.map((value, index) => {
           console.log(value);
           return <BookCard data={value} key={index}></BookCard>;

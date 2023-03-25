@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
+import { Icon } from '@iconify/react';
+
+import '../biblioCSS/index.scss'
 
 function BookCard (data) {
 
     let metaData = data;
-
     const [imageView, setImageView] = useState();
 
     const newTo = {
-        pathname:"/productPage/"+data.data.tokenId
+        pathname:"/bookPage/"+data.data.tokenId
     }
 
     const getIPFSGatewayURL = (ipfsURL)=>{
@@ -28,13 +31,17 @@ function BookCard (data) {
     }, [])
 
     return (
-        <div to={newTo}>
-            <br/>name: {data.data.name}
-            <br/>author: {data.data.author}
-            <br/>description: {data.data.description}
-            <br/>price: {data.data.price}
-            <br/>link: <a href={data.data.link} download>DOWNLOAD HERE</a>
-            <img className='NFTImg' src={imageView} alt="NFT preview"/>
+        <div className="book-card">
+            <div className="card-link" to={newTo}>
+                <img className='NFTImg' src={imageView} alt="NFT preview"/>
+                <div className="name">{data.data.name}</div>
+                <div className="author">By: {data.data.author}</div>
+                <div className="price">
+                    <Icon className="eth" icon="logos:ethereum" />
+                        {data.data.price}
+                </div>
+                <button className="buy"><Link className="card-link">Buy Now</Link></button>
+            </div>
         </div>
         
     )
