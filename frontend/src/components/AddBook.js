@@ -11,6 +11,7 @@ const MintNFT =() => {
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState(0);
     const [genre, setGenre] = useState('1');
+    const [link, setLink] = useState('1');
 
     const [errorMessage, setErrorMessage] = useState(null);
     const [uploadedFile, setUploadedFile] = useState();
@@ -18,14 +19,6 @@ const MintNFT =() => {
     const [metaDataURL, setMetaDataURl] = useState();
     const [txURL, setTxURL] = useState();
     const [txStatus, setTxStatus] = useState();
-
-    // const submitButton = (event) => {
-    //     console.log(name);
-    //     console.log(author);
-    //     console.log(description);
-    //     console.log(price);
-    //     console.log(genre);
-    // }
 
     const handleFileUpload = (event) => {
         console.log("file is uploaded");
@@ -36,7 +29,7 @@ const MintNFT =() => {
         setTxURL("");
     }
 
-    const uploadNFTContent = async(inputFile, name, author, description) =>{
+    const uploadNFTContent = async(inputFile, name, author, description, link) =>{
         const nftStorage = new NFTStorage({token: APIKEY,});
         try {
             setTxStatus("Uploading NFT to IPFS & Filecoin via NFT.storage.");
@@ -44,6 +37,7 @@ const MintNFT =() => {
                 name: name,
                 author: author,
                 description: description,
+                link: link,
                 image: inputFile
             });
             setMetaDataURl(getIPFSGatewayURL(metaData.url));
@@ -63,6 +57,7 @@ const MintNFT =() => {
 
     const previewNFT = (metaData, bookToken) =>{
         let imgViewString = getIPFSGatewayURL(metaData.data.image.pathname);
+        console.log(metaData.data.image.pathname);
         setImageView(imgViewString);
         setMetaDataURl(getIPFSGatewayURL(metaData.url));
         setTxURL('https://explorer.pops.one/tx/'+ bookToken.hash);
@@ -72,7 +67,7 @@ const MintNFT =() => {
     const mintNFTToken = async(event, uploadedFile) =>{
         event.preventDefault();
         //1. upload NFT content via NFT.storage
-        const metaData = await uploadNFTContent(uploadedFile, name, author, description);
+        const metaData = await uploadNFTContent(uploadedFile, name, author, description, link);
         console.log(metaData)  
         //2. Mint a NFT token on biblio
         const bookToken = await sendToBiblio(metaData);
@@ -112,15 +107,15 @@ const MintNFT =() => {
                 <br/>Price: <input type="number" step="any" onChange={(event)=>{setPrice(event.target.value)}}></input>
                 <br/>Genre:
                 <select className="genre" onChange={(event)=>{setGenre(event.target.value)}}>
-                    <option value="1">Romance</option>
+                    <option value="1">Mystery</option>
                     <option value="2">Sci-Fi</option>
-                    <option value="3">Young Adult</option>
+                    <option value="3">Y/A</option>
                     <option value="4">Manga</option>
                     <option value="5">Fiction</option>
                     <option value="6">True Crime</option>
                 </select>
+                <br/>Downloadable link: <input type="text" name="link" onChange={(event)=>{setLink(event.target.value)}}/>
                 <br/>
-                {/* <button onClick={submitButton}>NISHANTH IS A DUMBASS</button> */}
                 <button onClick={e=>mintNFTToken(e, uploadedFile)}>Mint NFT</button>
             </form>
             {txStatus && <p>{txStatus}</p>}

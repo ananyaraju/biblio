@@ -1,20 +1,29 @@
 import '../biblioCSS/index.scss'
+import BookCard from './BookCard'
 
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import LibraryJSON from "../Library.json";
 import { ethers } from 'ethers';
+import axios from "axios";
 
 const Library = () => {
 
-  const books = [];
-  const [libraryData, updateLibraryData] = useState(books);
+  const sampleData = [];
+  const [libraryData, updateLibraryData] = useState(sampleData);
   const [libraryDataFetched, libraryUpdateFetched] = useState(false);
+  const [imageView, setImageView] = useState();
 
   const getIPFSGatewayURL = (ipfsURL)=>{
     let urlArray = ipfsURL.split("/");
     let ipfsGateWayURL = `https://${urlArray[2]}.ipfs.dweb.link/${urlArray[3]}`;
     return ipfsGateWayURL;
-}
+  }
+
+  const previewNFT = ({data}) =>{
+    console.log(data.data.image);
+    let imgViewString = getIPFSGatewayURL(data.data.image.pathname);
+    setImageView(imgViewString);
+  }
 
   async function getAllNFTs() {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -24,40 +33,32 @@ const Library = () => {
         provider.getSigner()
     );
     let allBooks = await connectedContract.getAllBooks()
-    //console.log(allBooks);
     const items = await Promise.all(allBooks.map(async i => {
       const tokenURI = await connectedContract.tokenURI(i.tokenId);
       let metadataURL = getIPFSGatewayURL(tokenURI);
-      let tID, tname, tauthor, tdescription, timage, tdowncount, tprice, tgenre, tpub;
-      fetch(metadataURL)
-      .then((response) => response.json())
-      .then((data) => {
-        tprice = ethers.utils.formatUnits(i.price.toString(), 'ether');
-        tID =  i.tokenId.toNumber();
-        tname = data.name;
-        tauthor = data.author;
-        tdescription = data.description;
-        timage = data.image;
-        tdowncount = i.downloadCount;
-        tgenre = i.genre;
-        tpub = i.publisher;
-        let item = {
-          price: tprice,
-          tokenId: tID,
-          name: tname,
-          author: tauthor,
-          description: tdescription,
-          image: timage,
-          downloadCount: tdowncount,
-          genre: tgenre,
-          publisher: tpub
-        }
-        console.log(item);
-        return item;
-      });
+      let meta = await axios.get(metadataURL);
+      meta = meta.data;
+      let item = {
+        price: ethers.utils.formatUnits(i.price.toString(), 'ether'),
+        tokenId: i.tokenId.toNumber(),
+        name: meta.name,
+        author: meta.author,
+        description: meta.description,
+        image: meta.image,
+        downloadCount: i.downloadCount,
+        genre: i.genre,
+        publisher: i.publisher,
+        link: meta.link
+      }
+      return item;
     }))
-    console.log(items);
+    console.log("e-Library: ",items);
     libraryUpdateFetched(true);
+    updateLibraryData(items);
+  }
+
+  if(!libraryDataFetched) {
+    getAllNFTs();
   }
 
   return (
@@ -65,8 +66,10 @@ const Library = () => {
     <div className="library">
       <p>Explore our Library</p>
       <div>
-        <button onClick={getAllNFTs}>GET</button>
-        hello
+        {libraryData.map((value, index) => {
+          console.log(value);
+          return <BookCard data={value} key={index}></BookCard>;
+        })}
       </div>
     </div>
 
