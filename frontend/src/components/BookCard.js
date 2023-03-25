@@ -32,16 +32,16 @@ function BookCard (data) {
 
     return (
         <div className="book-card">
-            <div className="card-link" to={newTo}>
+            <Link className="card-link" to={newTo}>
                 <img className='NFTImg' src={imageView} alt="NFT preview"/>
                 <div className="name">{data.data.name}</div>
                 <div className="author">By: {data.data.author}</div>
                 <div className="price">
                     <Icon className="eth" icon="logos:ethereum" />
-                        {data.data.price}
+                    <div className="money">{data.data.price}</div>
                 </div>
-                <button className="buy"><Link className="card-link">Buy Now</Link></button>
-            </div>
+                {/* <button className="buy"><Link className="card-link">Buy Now</Link></button> */}
+            </Link>
         </div>
         
     )
