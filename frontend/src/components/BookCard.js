@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { ethers } from 'ethers'
+import { Link } from "react-router-dom";
 
 import LibraryJSON from '../Library.json'
 import '../biblioCSS/index.scss'
@@ -22,7 +22,6 @@ function BookCard (data) {
         console.log(metaData.data.image);
         let imgViewString = getIPFSGatewayURL(metaData.data.image);
         setImageView(imgViewString);
-        console.log(imageView);
     }
 
     useEffect(() => {
@@ -61,12 +60,17 @@ function BookCard (data) {
                     <Icon className="eth" icon="logos:ethereum" />
                     <div className="money">{data.data.price}</div>
                 </div>
-                <button className="buy" onClick={buyNow}><Link className="card-link">Buy Now</Link></button>
-                { transactionComplete ? (
+                <Link to={`/bookPage/${data.data.tokenId}`}>Go to page</Link>
+                <button className="button" style={{width: '100%', borderRadius: '4px'}} onClick={buyNow}>
+                    Buy Now
+                </button>
+                <br/>
+                <a href={data.data.link} download>Download your book now!</a>
+                {/* { transactionComplete ? (
                     <div>
                         <a href={data.data.link} download>Download your book now!</a>
                     </div>
-                ) : <p></p>}
+                ) : <p></p>} */}
             </div>
         </div>
         

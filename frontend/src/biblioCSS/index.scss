@@ -131,8 +131,7 @@ body {
         display: flex;
         justify-content: left;
         flex-wrap: wrap;
-        margin-left: 5%;
-        margin-right: 15%;
+        margin-left: 4%;
     }
 }
 
@@ -180,6 +179,7 @@ body {
 //Book Cards
 .book-card {
     max-width: 15rem;
+    min-height: 25rem;
     padding: 15px;
     margin: 20px;
     border-radius: 10px;
