@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Icon } from '@iconify/react';
 import { ethers } from 'ethers'
-import { Link } from "react-router-dom";
 
 import LibraryJSON from '../Library.json'
 import '../biblioCSS/index.scss'
@@ -26,6 +25,7 @@ function BookCard (data) {
 
     useEffect(() => {
         previewNFT();
+        // eslint-disable-next-line
     }, [])
 
     async function buyNow() {

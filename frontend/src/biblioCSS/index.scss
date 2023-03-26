@@ -104,7 +104,7 @@ body {
     background-color: $blue;
     color: white;
     border: none;
-    border-radius: 18px;
+    border-radius: 15px;
     padding: 10px;
     text-decoration: none;
 }
@@ -120,7 +120,7 @@ body {
 
 //Library
 .library {
-    margin-left: 60px; //to align to center (due to sidebar)
+    margin-left: 80px; //to align to center (due to sidebar)
     margin-top: $topmargin*2;
     p {
         margin-left: 7%;
@@ -128,7 +128,7 @@ body {
         font-family: $royalfont;
         font-weight: 700;
         font-size: $fontlarge*1.6;
-        margin-bottom: 80px;
+        margin-bottom: 40px;
     }
     .books-container {
         display: flex;
@@ -140,7 +140,7 @@ body {
 
 //Add Book
 .addbook {
-    margin-left: 60px; //to align to center (due to sidebar)
+    margin-left: 80px; //to align to center (due to sidebar)
     margin-top: $topmargin*2;
     p {
         margin-left: 7%;
