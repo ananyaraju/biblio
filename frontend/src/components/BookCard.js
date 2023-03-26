@@ -19,6 +19,7 @@ function BookCard (data) {
     }
     
     const previewNFT = () =>{
+        //console.log(metaData.data.image);
         let imgViewString = getIPFSGatewayURL(metaData.data.image);
         setImageView(imgViewString);
     }
@@ -47,11 +48,10 @@ function BookCard (data) {
         }
     }
 
-
-    // <Link className="card-link" to={`/bookPage/${data.data.tokenId}`}></Link>
     return (
+        // to={`/bookPage/${data.data.tokenId}`}
         <div className="book-card">
-            <Link className="card-link" to={`/bookPage/${data.data.tokenId}`}>
+            <div className="card-link">
                 <img className='NFTImg' src={imageView} alt="NFT preview"/>
                 <div className="book-info">
                     <div className="name">{data.data.name}</div>
@@ -61,12 +61,13 @@ function BookCard (data) {
                         <div className="money">{data.data.price}</div>
                     </div>
                 </div>
-                {/* { transactionComplete ? (
+                <button className="button" onClick={buyNow} style={{width: '100%', borderRadius: '4px', margin: '5px'}}>Buy Now</button>
+                { transactionComplete ? (
                     <div>
-                        <a href={data.data.link} download>Download your book now!</a>
+                        <a className="download-link" href={data.data.link} download>Download your book now!</a>
                     </div>
-                ) : <p></p>} */}
-            </Link>
+                ) : <></>}
+            </div>
         </div>
         
     )

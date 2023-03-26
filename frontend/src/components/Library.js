@@ -1,5 +1,6 @@
 import '../biblioCSS/index.scss'
 import BookCard from './BookCard'
+import TopBar from './TopBar';
 
 import React, { useState } from 'react';
 import LibraryJSON from "../Library.json";
@@ -63,15 +64,16 @@ const Library = () => {
 
   return (
 
-    <div className="library">
-      <p>Explore our Library</p>
-      <div className="books-container">
-        {libraryData.map((value, index) => {
-          console.log(value);
-          return <BookCard data={value} key={index}></BookCard>;
-        })}
+      <div className="library">
+        <TopBar/>
+        <p>Explore our Library</p>
+        <div className="books-container">
+          {libraryData.map((value, index) => {
+            console.log(value);
+            return <BookCard data={value} key={index}></BookCard>;
+          })}
+        </div>
       </div>
-    </div>
 
   )
 

@@ -3,20 +3,19 @@ import { useParams } from 'react-router-dom'
 import { ethers } from "ethers"
 import axios from 'axios'
 
-import BookTemplate from '../components/BookTemplate'
 import LibraryJSON from '../Library.json'
+import TopBar from './TopBar'
 
 function BookDetails() {
 
-    const sampleData = [];
     let {tokenId} = useParams();
     const [tId, setTID] = useState();
-    const [book, setBook] = useState(sampleData);
 
     useEffect(() => {
         getBook(tokenId);
         setTID(tokenId);
       }, [tokenId]);
+
 
     const getIPFSGatewayURL = (ipfsURL)=>{
       let urlArray = ipfsURL.split("/");
@@ -48,14 +47,13 @@ function BookDetails() {
             genre: bookGenre,
             downloadCount: bookDownCount
         }
-        setBook(item);
+        console.log("MY ITEM: ",item);
         return item;
     }
 
     return (
-        <div>
-            render single book details
-            <BookTemplate data={book} key={tId}/>
+        <div className="addbook">
+            <TopBar />
         </div>
     )
 }

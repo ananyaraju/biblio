@@ -13,8 +13,8 @@ function App() {
 
   return (
     <div className="App">
-      <AccountProvider>
         <BrowserRouter>
+        <AccountProvider>
           <>
             <NavBar />
             <div>
@@ -26,8 +26,8 @@ function App() {
               </Routes>
             </div>
           </>
+          </AccountProvider>
         </BrowserRouter>
-      </AccountProvider>
     </div>
   );
 }

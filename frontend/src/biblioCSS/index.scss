@@ -50,33 +50,36 @@ body {
     }
 }
 
+//Top Nav
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5%;
+    margin-right: 8%;
+    margin-bottom: 50px;
+    .icon {
+        margin-right: 10px;
+    }
+    input {
+        width: 60%;
+        font-size: $fontsmall;
+        color: $text;
+        background-color: $lightbiege;
+        border: none;
+        border-bottom: 1px solid $mediumbiege;
+    }
+    input:focus {
+        text-decoration: none;
+        border: none;
+        outline: none;
+    }
+}
+
+
 //Homepage
 .home {
     margin-left: 60px; //to align to center (due to sidebar)
-    margin-top: $topmargin;
-    .top-nav {
-        display: flex;
-        justify-content: space-between;
-        margin-left: 5%;
-        margin-right: 8%;
-        margin-bottom: 50px;
-        .icon {
-            margin-right: 10px;
-        }
-        input {
-            width: 60%;
-            font-size: $fontsmall;
-            color: $text;
-            background-color: $lightbiege;
-            border: none;
-            border-bottom: 1px solid $mediumbiege;
-        }
-        input:focus {
-            text-decoration: none;
-            border: none;
-            outline: none;
-        }
-    }
+    margin-top: $topmargin*2;
     .header {
         text-align: left;
         margin-left: 60px;
@@ -125,7 +128,7 @@ body {
         font-family: $royalfont;
         font-weight: 700;
         font-size: $fontlarge*1.6;
-        margin-bottom: 50px;
+        margin-bottom: 80px;
     }
     .books-container {
         display: flex;
@@ -179,21 +182,23 @@ body {
 //Book Cards
 .book-card {
     max-width: 10rem;
-    min-height: 22rem;
+    min-height: 27rem;
     padding: 15px;
     margin: 20px;
     border-radius: 10px;
     color: white;
     .book-info {
-        min-height: 7rem;
+        min-height: 8rem;
         max-width: 10rem;
     }
     .NFTImg {
         max-height: 12.5rem;
         max-width: 10rem;
-        box-shadow: -5px 6px 7px 0.5px rgb(173, 173, 173);
         margin-bottom: 12px;
         transition: 0.5s;
+        background: linear-gradient(to right, rgb(60, 13, 20) 3px, rgba(255, 255, 255, 0.5) 5px, rgba(255, 255, 255, 0.25) 7px, rgba(255, 255, 255, 0.25) 10px, transparent 12px, transparent 16px, rgba(255, 255, 255, 0.25) 17px, transparent 22px), url(https://images-na.ssl-images-amazon.com/images/I/51pnouuPO5L.jpg);
+        box-shadow: 0 0 5px -1px black, inset -1px 1px 2px rgba(255, 255, 255, 0.5);
+        border-radius: 5px;
     }
     .NFTImg:hover {
         margin-top: -10px;
