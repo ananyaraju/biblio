@@ -19,7 +19,6 @@ function BookCard (data) {
     }
     
     const previewNFT = () =>{
-        console.log(metaData.data.image);
         let imgViewString = getIPFSGatewayURL(metaData.data.image);
         setImageView(imgViewString);
     }

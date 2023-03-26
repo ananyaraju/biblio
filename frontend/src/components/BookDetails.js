@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { ethers } from "ethers"
 import axios from 'axios'
@@ -8,10 +8,14 @@ import LibraryJSON from '../Library.json'
 
 function BookDetails() {
 
+    const sampleData = [];
     let {tokenId} = useParams();
+    const [tId, setTID] = useState();
+    const [book, setBook] = useState(sampleData);
 
     useEffect(() => {
         getBook(tokenId);
+        setTID(tokenId);
       }, [tokenId]);
 
     const getIPFSGatewayURL = (ipfsURL)=>{
@@ -44,14 +48,14 @@ function BookDetails() {
             genre: bookGenre,
             downloadCount: bookDownCount
         }
-        console.log("MY ITEM: ",item);
+        setBook(item);
         return item;
     }
 
     return (
         <div>
             render single book details
-            <BookTemplate />
+            <BookTemplate data={book} key={tId}/>
         </div>
     )
 }
