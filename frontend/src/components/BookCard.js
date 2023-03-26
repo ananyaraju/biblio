@@ -54,11 +54,13 @@ function BookCard (data) {
         <div className="book-card">
             <div className="card-link">
                 <img className='NFTImg' src={imageView} alt="NFT preview"/>
-                <div className="name">{data.data.name}</div>
-                <div className="author">By: {data.data.author}</div>
-                <div className="price">
-                    <Icon className="eth" icon="logos:ethereum" />
-                    <div className="money">{data.data.price}</div>
+                <div className="book-info">
+                    <div className="name">{data.data.name}</div>
+                    <div className="author">By: {data.data.author}</div>
+                    <div className="price">
+                        <Icon className="eth" icon="logos:ethereum" />
+                        <div className="money">{data.data.price}</div>
+                    </div>
                 </div>
                 <Link to={`/bookPage/${data.data.tokenId}`}>Go to page</Link>
                 <button className="button" style={{width: '100%', borderRadius: '4px'}} onClick={buyNow}>

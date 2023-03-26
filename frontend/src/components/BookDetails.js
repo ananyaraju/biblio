@@ -7,9 +7,6 @@ import LibraryJSON from '../Library.json'
 
 function BookDetails() {
 
-    const sample=[];
-    const [bookData, setBookData] = useState(sample);
-
     let {tokenId} = useParams();
     const [ book, setBook ] = useState();
 
@@ -35,15 +32,14 @@ function BookDetails() {
         let metadataURL = getIPFSGatewayURL(tokenURI);
         let meta = await axios.get(metadataURL);
         meta = meta.data;
-        console.log("Book Meta Info: ",meta)
-        setBookData(meta);
+        console.log("Meta Info: ",meta)
         let item = {
             name: meta.name,
             author: meta.author,
             description: meta.description,
             link: meta.link,
-            image: meta.image,
-            // price: book.price,
+            image: meta.image
+            //price: ethers.utils.formatUnits(book.price.toString(), 'ether'),
             // genre: book.genre,
             // downloadCount: book.downloadCount
         }

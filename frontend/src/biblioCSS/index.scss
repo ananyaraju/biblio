@@ -179,11 +179,14 @@ body {
 //Book Cards
 .book-card {
     max-width: 15rem;
-    min-height: 25rem;
+    min-height: 20rem;
     padding: 15px;
     margin: 20px;
     border-radius: 10px;
     color: white;
+    .book-info {
+        min-height: 7rem;
+    }
     .NFTImg {
         height: 12.5rem;
         width: 10rem;
