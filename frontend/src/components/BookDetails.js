@@ -3,12 +3,12 @@ import { useParams } from 'react-router-dom'
 import { ethers } from "ethers"
 import axios from 'axios'
 
+import BookTemplate from '../components/BookTemplate'
 import LibraryJSON from '../Library.json'
 
 function BookDetails() {
 
     let {tokenId} = useParams();
-    const [ book, setBook ] = useState();
 
     useEffect(() => {
         getBook(tokenId);
@@ -27,21 +27,22 @@ function BookDetails() {
             LibraryJSON.address, LibraryJSON.abi, provider.getSigner()
         );
         let book = await connectedContract.getBookDetails(tokenId);
-        console.log("Book Info: ",book);
+        let bookPrice = ethers.utils.formatUnits(Object.values(book)[0].price.toString(), 'ether');
+        let bookGenre = Object.values(book)[0].genre.toString();
+        let bookDownCount = Object.values(book)[0].downloadCount.toString();
         const tokenURI = await connectedContract.tokenURI(tokenId);
         let metadataURL = getIPFSGatewayURL(tokenURI);
         let meta = await axios.get(metadataURL);
         meta = meta.data;
-        console.log("Meta Info: ",meta)
         let item = {
             name: meta.name,
             author: meta.author,
             description: meta.description,
             link: meta.link,
-            image: meta.image
-            //price: ethers.utils.formatUnits(book.price.toString(), 'ether'),
-            // genre: book.genre,
-            // downloadCount: book.downloadCount
+            image: meta.image,
+            price: bookPrice,
+            genre: bookGenre,
+            downloadCount: bookDownCount
         }
         console.log("MY ITEM: ",item);
         return item;
@@ -50,7 +51,7 @@ function BookDetails() {
     return (
         <div>
             render single book details
-            
+            <BookTemplate />
         </div>
     )
 }

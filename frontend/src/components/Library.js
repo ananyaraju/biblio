@@ -34,7 +34,6 @@ const Library = () => {
     );
     let allBooks = await connectedContract.getAllBooks()
     const items = await Promise.all(allBooks.map(async i => {
-      console.log("i: ",i);
       const tokenURI = await connectedContract.tokenURI(i.tokenId);
       let metadataURL = getIPFSGatewayURL(tokenURI);
       let meta = await axios.get(metadataURL);

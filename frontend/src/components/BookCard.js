@@ -52,7 +52,7 @@ function BookCard (data) {
     // <Link className="card-link" to={`/bookPage/${data.data.tokenId}`}></Link>
     return (
         <div className="book-card">
-            <div className="card-link">
+            <Link className="card-link" to={`/bookPage/${data.data.tokenId}`}>
                 <img className='NFTImg' src={imageView} alt="NFT preview"/>
                 <div className="book-info">
                     <div className="name">{data.data.name}</div>
@@ -62,18 +62,12 @@ function BookCard (data) {
                         <div className="money">{data.data.price}</div>
                     </div>
                 </div>
-                <Link to={`/bookPage/${data.data.tokenId}`}>Go to page</Link>
-                <button className="button" style={{width: '100%', borderRadius: '4px'}} onClick={buyNow}>
-                    Buy Now
-                </button>
-                <br/>
-                <a href={data.data.link} download>Download your book now!</a>
                 {/* { transactionComplete ? (
                     <div>
                         <a href={data.data.link} download>Download your book now!</a>
                     </div>
                 ) : <p></p>} */}
-            </div>
+            </Link>
         </div>
         
     )
