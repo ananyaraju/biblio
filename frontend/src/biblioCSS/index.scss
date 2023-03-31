@@ -85,6 +85,7 @@ body {
         margin-left: 60px;
         margin-right: 60px;
         max-width: 60%;
+        position: absolute;
         h2 {
             margin-top: 60px;
             margin-right: 40px;
@@ -97,6 +98,12 @@ body {
             margin-bottom: 30px;
             font-size: $fontmedium;
         }
+    }
+    .header-img {
+        margin-top: 6%;
+        margin-left: 40%;
+        height: 400px;
+        position: relative;
     }
 }
 .button {

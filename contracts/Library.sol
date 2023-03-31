@@ -36,6 +36,7 @@ contract Library is ERC721URIStorage {
         owner = payable(msg.sender);
     }
 
+    //Creating a book token
     function createToken(string memory tokenURI, uint256 price, uint256 genre) public payable returns (uint) {
 
         //Make sure sender sent enough ETH to pay for listing
@@ -74,7 +75,7 @@ contract Library is ERC721URIStorage {
 
     }
 
-    //Returning details of all books in listed in e-library
+    //Returning details of a specific book in e-library
     function getBookDetails(uint T_ID) public view returns (BookToken[] memory) {
         uint bookCount = _tokenIds.current();
         BookToken[] memory bookDetails = new BookToken[](1);
